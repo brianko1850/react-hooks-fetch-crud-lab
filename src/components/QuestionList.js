@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 import QuestionItem from "./QuestionItem";
 
-function QuestionList({questions, handleDelete}) {
+function QuestionList({questions, handleDelete, updateList}) {
+
+
   const displayQuestions = questions.map((question)=>
   (<QuestionItem question={question} key={question.id} handleDelete={handleDelete}/>))
 
