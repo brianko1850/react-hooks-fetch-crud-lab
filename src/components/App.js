@@ -24,19 +24,21 @@ function App() {
     })
   }
 
-
+ 
+  const deleteQuestion=(id)=>{
+    fetch(`http://localhost:4000/questions/${id}`,{
+      method: "DELETE"
+    })
+    const updatedQuestions = questions.filter(question => question.id !== id)
+    setQuestions(updatedQuestions)
+  }
   
-  const deleteQuestion=(question)=>{
-    fetch(`http://localhost:4000/questions/${question.id}`,{
-        method: "DELETE"
-      })
-      }
 
 
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
-      {page === "Form" ? <QuestionForm postQuestion={postQuestion}/> : <QuestionList handleDelete={ deleteQuestion } questions={questions}/>}
+      {page === "Form" ? <QuestionForm postQuestion={postQuestion}/> : <QuestionList onDelete={ deleteQuestion } questions={questions}/>}
     </main>
   );
 }

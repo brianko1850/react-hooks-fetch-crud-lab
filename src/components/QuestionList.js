@@ -1,11 +1,13 @@
 import React, {useState} from "react";
 import QuestionItem from "./QuestionItem";
 
-function QuestionList({questions, handleDelete, updateList}) {
+function QuestionList({questions, onDelete} ) {
+
+  
 
 
   const displayQuestions = questions.map((question)=>
-  (<QuestionItem question={question} key={question.id} handleDelete={handleDelete}/>))
+  (<QuestionItem question={question} key={question.id} onDelete={onDelete}/>))
 
   return (
     <section>
